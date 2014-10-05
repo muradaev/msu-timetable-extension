@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "MSU Timetable",
+  "version": "0.1",
+
+  "description": "Personal schedule retrieving tool for www.timetable.msu.az/ ",
+  "icons": {
+    "48" : "img/icon-48.png",
+    "128" : "img/icon-128.png"
+  },
+
+  "author": "Emin Yahayev",
+
+  "permissions": [
+    "declarativeContent",
+    "storage"
+  ],
+
+  "page_action": {
+    "default_icon": "img/icon-38.png",
+    "default_title": "Timetable options",
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://timetable.msu.az/main.php"],
+      "js" : [
+        "js/libs/jquery.min.js",
+        "js/libs/html2canvas.js",
+        "js/content.js"
+      ],
+      "css" : ["css/style.css"]
+    }
+  ]
+}
