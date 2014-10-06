@@ -1,5 +1,3 @@
-console.log("No easter eggs here! Go away");
-
 // IIFE - Immediately Invoked Function Expression
 (function(libraries){
     libraries(window.jQuery, window, document);
@@ -31,14 +29,14 @@ console.log("No easter eggs here! Go away");
         return new Date(d.setDate(diff));
     }
 
-    function setStorageData(select, setting) {
+    function changeSelect(select, setting) {
         return function (data) {
             select.val(data[setting])
                 .click();
         }
     }
 
-    function setWeek(select) {
+    function checkWeek(select) {
         return function () {
             var option = $(this);
             if (option.val() == 0)
@@ -50,17 +48,16 @@ console.log("No easter eggs here! Go away");
             if ((monday.getDate() == parseInt(strs[0])) &&
                 ((monday.getMonth() + 1) == parseInt(strs[1])) &&
                 (monday.getFullYear() == parseInt(strs[2]))) {
-                console.log("Date catched!");
                 select.val(option.val());
                 return false;
             }
         }
     }
 
-    function DOMReady() {
+    function DOMReady () {
         $(TAMPLATE_TABLE).insertBefore("#tblLinks");
 
-        $('#scheudle_link').click( function () {
+        $('#scheudle_link').click(function () {
             var $divRes = $("#divRes");
             $divRes.html("<img src='../img/loading.gif' border='0'>");
 
@@ -70,44 +67,35 @@ console.log("No easter eggs here! Go away");
                     var course = $("#repCourseId");
 
                     //setup faculty and course
-                    chrome.storage.local.get("faculty", setStorageData(faculty, "faculty"));
-                    chrome.storage.local.get("course", setStorageData(course, "course"));
-
-                    //setup image download link
-                    $divRes.find("tbody").append(
-                            '<tr height="16px"></tr><tr><td width="130px" colspan="3" >' +
-                            '<a id="download">Сохранить как изображение</a>' +
-                            '</td></tr>"'
-                    );
-
-                    $("#download").click(function () {
-                        var link = this;
-                        html2canvas(document.getElementById('divPrint'), {
-                            // width: 1024,
-                            // height: 768,
-                            onrendered: function (canvas) {
-                                link.href = canvas.toDataURL();
-                                link.download = "msu_scheudle.jpg"
-                            }
-                        });
-                    });
+                    chrome.storage.local.get("faculty", changeSelect(faculty, "faculty"));
+                    chrome.storage.local.get("course", changeSelect(course, "course"));
 
                     //show table
                     $divRes.show();
 
                     //setup week
-                    setTimeout(function () {
-                        var week = $("#repWeekId");
-                        week.find("option").each(setWeek(week));
-
-                        //load scheudle
-                        $("#repGraph").click();
-                    }, 600);
+                    (function timeout(step) {
+                        if (step < 20)
+                        setTimeout(function(){
+                            var week = $("#repWeekId");
+                            if (week.length == 0) {
+                                timeout(step+1);
+                            } else {
+                                week.find("option").each(checkWeek(week));
+                                //load scheudle
+                                $("#repGraph").click();
+                            }
+                        }, 200)
+                    })(0);
 
                 });
             });
         });
 
+        chrome.storage.local.get('showScheudle', function(data){
+            if (data['showScheudle'] === true)
+                $('#scheudle_link').click();
+        });
 
         $('#plan_link').click(function () {
             var $divRes = $("#divRes");
@@ -119,7 +107,7 @@ console.log("No easter eggs here! Go away");
                     var faculty = $("#profId");
 
                     year.val(3);
-                    chrome.storage.local.get("faculty", setStorageData(faculty, "faculty"));
+                    chrome.storage.local.get("faculty", changeSelect(faculty, "faculty"));
 
                     $divRes.show();
                 });
@@ -127,7 +115,6 @@ console.log("No easter eggs here! Go away");
         });
     }
 
-    //DOM ready
-    $(document).ready(DOMReady);
+    $(DOMReady);
 
 }));

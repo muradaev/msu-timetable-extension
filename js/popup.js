@@ -3,31 +3,44 @@
     libraries(window.jQuery, window, document);
 }(function($, window, document) {
 
-    function settingChanged() {
-        var type = this.id;
-        var value = this.value;
-        var param = {};
-        param[type] = value;
 
-        chrome.storage.local.set(param, function() {
-            console.log(type+' saved as: '+value);
-        });
-    }
-
-    function changeSetting(select) {
+    function changeSelect(select) {
         return function (data) {
             select.value = data[select.id];
-            console.log(select.id + ' has set to: '+ data[select.id]);
         }
     }
 
-    //DOM ready
-    $(function(){
+    function changeCheckBox(box) {
+        return function (data) {
+            if (data[box.id] === true)
+                $(box).prop('checked', true);
+        }
+    }
+
+    function DOMReady() {
         $('select').each(function(){
             var select = this;
-            chrome.storage.local.get(select.id, changeSetting(select));
-            $(select).change(settingChanged);
+            chrome.storage.local.get(select.id, changeSelect(select));
+
+            $(select).change(function(){
+                var param = {};
+                param[this.id] = this.value;
+                chrome.storage.local.set(param);
+            });
         });
-    });
+
+        $('#showScheudle').each(function(){
+            var box = this;
+            chrome.storage.local.get(box.id, changeCheckBox(box));
+
+            $(box).change(function(){
+                var param = {};
+                param[this.id] = $(this).prop('checked');
+                chrome.storage.local.set(param);
+            });
+        })
+    }
+
+    $(DOMReady);
 
 }));

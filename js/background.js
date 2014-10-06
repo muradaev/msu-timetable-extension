@@ -17,7 +17,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
 
   if(details.reason == "install"){
       console.log("This is a first install!");
-      chrome.tabs.create({url: "timetable.msu.az"});
+      chrome.tabs.create({url: "http://timetable.msu.az"});
   } else
   if(details.reason == "update"){
       var thisVersion = chrome.runtime.getManifest().version;

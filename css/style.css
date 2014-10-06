@@ -33,6 +33,13 @@ select {
     height: 30px;
 }
 
-#btnPrint {
-    width: 300;
+#btndownload {
+    font-family: Arial;
+    font-size: 12px;
+    width: 200px;
+    border: solid 1px black;
+}
+
+.hrSep {
+    color: #212854;
 }
