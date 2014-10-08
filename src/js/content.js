@@ -63,31 +63,28 @@
 
             $.post("../process.php", {pagenum: 'tdeduGraph_common'}, function (resp) {
                 $divRes.load(resp, null, function () {
-                    var faculty = $("#repProfId");
-                    var course = $("#repCourseId");
+                    var $faculty = $("#repProfId");
+                    var $course = $("#repCourseId");
 
                     //setup faculty and course
-                    chrome.storage.local.get("faculty", changeSelect(faculty, "faculty"));
-                    chrome.storage.local.get("course", changeSelect(course, "course"));
+                    chrome.storage.local.get("faculty", changeSelect($faculty, "faculty"));
+                    chrome.storage.local.get("course", changeSelect($course, "course"));
 
                     //show table
                     $divRes.show();
 
                     //setup week
-                    (function timeout(step) {
-                        if (step < 20)
-                        setTimeout(function(){
-                            var week = $("#repWeekId");
-                            if (week.length == 0) {
-                                timeout(step+1);
-                            } else {
-                                week.find("option").each(checkWeek(week));
-                                //load scheudle
-                                $("#repGraph").click();
-                            }
-                        }, 200)
-                    })(0);
-
+                    var step = 0;
+                    var timer = setInterval(function(){
+                        var $week = $("#repWeekId");
+                        if ($week.length > 0) {
+                            $week.find("option").each(checkWeek($week));
+                            //load scheudle
+                            $("#repGraph").click();
+                            clearInterval(timer);
+                        }
+                        (step > 20) ? clearInterval(timer) : step++;
+                    }, 200);
                 });
             });
         });
@@ -103,11 +100,11 @@
 
             $.post("../process.php", {pagenum: 'tdeduPlan_common'}, function (resp) {
                 $divRes.load(resp, null, function () {
-                    var year = $("#eduplanId");
-                    var faculty = $("#profId");
+                    var $year = $("#eduplanId");
+                    var $faculty = $("#profId");
 
-                    year.val(3);
-                    chrome.storage.local.get("faculty", changeSelect(faculty, "faculty"));
+                    $year.val(3);
+                    chrome.storage.local.get("faculty", changeSelect($faculty, "faculty"));
 
                     $divRes.show();
                 });

@@ -3,7 +3,6 @@
     libraries(window.jQuery, window, document);
 }(function($, window, document) {
 
-
     function changeSelect(select) {
         return function (data) {
             select.value = data[select.id];
