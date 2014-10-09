@@ -10,10 +10,10 @@ A Google Chrome Extension enhancing university's schedule <a href="http://timeta
 Features
 --------
 
-Personal schedule settings
+### Personal schedule settings
 <img src="https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/scr-1.png"/>
 
-Navigation improvements
+### Navigation improvements
 <img src="https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/scr-2.png"/>
 
 Credits
