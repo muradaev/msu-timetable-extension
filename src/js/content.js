@@ -3,7 +3,7 @@
     libraries(window.jQuery, window, document);
 }(function($, window, document) {
 
-    var TAMPLATE_TABLE =
+    var TEMPLATE_TABLE =
         '<table id="tblCustom" width="150px" cellpadding="3" cellspacing="0">' +
         '<tbody>' +
         '<tr>' +
@@ -55,7 +55,7 @@
     }
 
     function DOMReady () {
-        $(TAMPLATE_TABLE).insertBefore("#tblLinks");
+        $(TEMPLATE_TABLE).insertBefore("#tblLinks");
 
         $('#scheudle_link').click(function () {
             var $divRes = $("#divRes");
