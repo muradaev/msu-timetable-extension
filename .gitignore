@@ -1,3 +1,6 @@
+# Ignore packed extension
+extension.zip
+
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
 /*.iml

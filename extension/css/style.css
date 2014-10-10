@@ -1,0 +1,45 @@
+body {
+    font-family: Arial;
+    font-size: 12px;
+}
+td {
+    font-family: Arial;
+    font-size: 12px;
+}
+select {
+    font-family: Arial;
+    font-size: 12px;
+    width: 250px;
+    border: solid 1px black;
+}
+#title {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 12px;
+    color: 212854;
+}
+.tdTitle {
+    height: 35px;
+    vertical-align: middle;
+}
+.tdBold {
+    font-weight: bold;
+}
+
+.td_list {
+    color: white;
+    font-weight: bold;
+    cursor: default;
+    height: 30px;
+}
+
+#btndownload {
+    font-family: Arial;
+    font-size: 12px;
+    width: 200px;
+    border: solid 1px black;
+}
+
+.hrSep {
+    color: #212854;
+}
