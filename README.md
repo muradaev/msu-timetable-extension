@@ -10,11 +10,11 @@ Features
 --------
 
 #### Personal schedule settings
-[screen](https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/scr-1.png)
+![screen](https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/scr-1.png)
 
     
 #### Navigation improvements
-[screen](https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/scr-2.png)
+![screen](https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/scr-2.png)
 
 Credits
 -------
