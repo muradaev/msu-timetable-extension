@@ -3,8 +3,9 @@ MSU Timetable Extension
 
 A Google Chrome Extension enhancing university's schedule <a href="http://timetable.msu.az">website</a>
 
-[![alt text](https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/chrome-store-badge.png)]
-(https://chrome.google.com/webstore/detail/msu-timetable/eabokdoanlaacdmpmbhhcjkdcdaeeffc)
+[1]: https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/chrome-store-badge.png
+[2]: https://chrome.google.com/webstore/detail/msu-timetable/eabokdoanlaacdmpmbhhcjkdcdaeeffc
+[![chrome store][1]][2]
 
 Features
 --------
