@@ -22,4 +22,4 @@ Credits
 Author: [Emin Yahyayev](https://github.com/ewintory).
 
 Baku branch of Moscow State University named after M. Lomonosov
-[msu](https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/msu-logo.jpg)
+![msu](https://raw.github.com/ewintory/msu-timetable-extension/master/screenshots/msu-logo.jpg)
